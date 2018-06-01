@@ -39,7 +39,7 @@ run of whitespaces. To check for multiple languages or value sets, simply write 
 multiple times. Hint: YAML files allow multi-line string literals like
 
   sometext: >
-    callingFormCheck: valud_id java: form1 form2
+    callingFormCheck: value_id java: form1 form2
     callingFormCheck: another_value_id python: formSpam formEgg formHam
 `
 
@@ -105,7 +105,7 @@ func main() {
 			errs = append(errs, c)
 		}
 		sort.Sort(checkConfigSlice(errs)) // Not sort.Slice, Go version on Travis is too old.
-		fmt.Printf("The following value set/calling form cominations are specified in %q but weren't found in *.baseline files:\n", *yamlFname)
+		fmt.Printf("The following value set/calling form combinations are specified in %q but weren't found in *.baseline files:\n", *yamlFname)
 		for _, e := range errs {
 			fmt.Println(e)
 		}

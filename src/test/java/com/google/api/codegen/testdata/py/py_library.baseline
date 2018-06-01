@@ -3534,7 +3534,7 @@ def lint_setup_py(session):
 
 ##     calling form "Generic"
 ##     valueSet "prog" ("Programming Books")
-##       description: "Testing calling forms: {Java:[CallableBidiStreaming]}"
+##       description: "callingFormCheck: prog java: CallableStreamingBidi callingFormCheck: prog nodejs: RequestStreamingBidi"
 ##       [name=BASIC]
 ##     apiMethod "discuss_book" of type "OptionalArrayMethod"
 
@@ -3575,7 +3575,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "odyssey" ("The Odyssey")
-##       description: "Testing calling forms: {Java:[FlattenedPaged, RequestPaged, CallableList, CallablePaged]}"
+##       description: "callingFormCheck: odyssey java: FlattenedPaged RequestPaged CallableList CallablePaged callingFormCheck: odyssey nodejs: RequestAsyncPaged RequestAsyncPagedAll"
 ##       [names[0]=Odyssey, shelves[0]=Classics]
 ##     apiMethod "find_related_books" of type "PagedOptionalArrayMethod"
 
@@ -3625,7 +3625,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "wap" ("GetBigBook: 'War and Peace'")
-##       description: "Testing calling forms: {Java:[LongRunningFlattenedAsync, LongRunningRequestAsync, Callable, LongRunningCallable]}"
+##       description: "callingFormCheck: wap java: LongRunningFlattenedAsync LongRunningRequestAsync Callable LongRunningCallable callingFormCheck: wap nodejs: LongRunningEventEmitter LongRunningPromise"
 ##       [name="War and Peace"]
 ##     apiMethod "get_big_book" of type "LongRunningOptionalArrayMethod"
 
@@ -3671,7 +3671,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "prog" ("Programming Books")
-##       description: "Testing calling forms: {Java:[CallableClientStreaming]}"
+##       description: "callingFormCheck: prog java: CallableStreamingClient callingFormCheck: prog nodejs: RequestStreamingClient"
 ##       [name=BASIC]
 ##     apiMethod "monolog_about_book" of type "OptionalArrayMethod"
 
@@ -3753,7 +3753,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "second_edition" ("Second edition")
-##       description: "Testing calling forms: {Java:[Flattened, Request, Callable]}"
+##       description: "callingFormCheck: second_edition java: Flattened Request Callable callingFormCheck: second_edition nodejs: Request"
 ##       [edition=2]
 ##     apiMethod "publish_series" of type "OptionalArrayMethod"
 
@@ -3798,7 +3798,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "prog" ("Programming Books")
-##       description: "Testing calling forms: {Java:[CallableServerStreaming]}"
+##       description: "callingFormCheck: prog java: CallableStreamingServer callingFormCheck: prog nodejs: RequestStreamingServer"
 ##       [name=BASIC]
 ##     apiMethod "stream_books" of type "OptionalArrayMethod"
 
@@ -3837,7 +3837,7 @@ print(response)
 
 ##     calling form "Generic"
 ##     valueSet "empty" ("Server streaming")
-##       description: "Testing calling forms: {Java:[CallableServerStreaming]}"
+##       description: "callingFormCheck: empty java: CallableStreamingServer callingFormCheck: empty nodejs: RequestStreamingServer"
 ##       []
 ##     apiMethod "stream_shelves" of type "OptionalArrayMethod"
 

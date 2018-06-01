@@ -16,14 +16,13 @@ check-calling-form-in-baseline
 ------------------------------
 Checks that calling forms and value sets tagged in `*_gapic.yaml` files is used in baselines.
 
-To test the test, run :
+To test the test, from the root of the repository run:
 
   go test testutils/check-calling-form-in-baseline/*.go
 
-from the root of the repository.
 
-To run the test, run 
+To run the test, from the root of the repository run:
 
   go run testutils/check-calling-form-in-baseline/main.go -yaml src/test/java/com/google/api/codegen/testsrc/library_gapic.yaml src
-  
-from the root of the repository.
+
+
