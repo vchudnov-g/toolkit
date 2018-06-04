@@ -360,6 +360,40 @@
   {@""}
 @end
 
+@private OLDapiMethods(xapiClass)
+  @join apiMethod : xapiClass.apiMethods
+    @switch apiMethod.type
+    @case "PagedFlattenedMethod"
+      {@pagedFlattenedMethod(apiMethod)}
+    @case "PagedRequestObjectMethod"
+      {@pagedRequestObjectMethod(apiMethod)}
+    @case "PagedCallableMethod"
+      {@pagedCallableMethod(apiMethod)}
+    @case "UnpagedListCallableMethod"
+      {@unpagedListCallableMethod(apiMethod)}
+    @case "FlattenedMethod"
+      {@flattenedMethod(apiMethod)}
+    @case "RequestObjectMethod"
+      {@requestObjectMethod(apiMethod)}
+    @case "CallableMethod"
+      @if apiMethod.isStreaming
+        {@streamingCallableMethod(apiMethod)}
+      @else
+        {@callableMethod(apiMethod)}
+      @end
+    @case "AsyncOperationFlattenedMethod"
+      {@asyncOperationFlattenedMethod(apiMethod)}
+    @case "AsyncOperationRequestObjectMethod"
+      {@asyncOperationRequestObjectMethod(apiMethod)}
+    @case "OperationCallableMethod"
+      {@operationCallableMethod(apiMethod)}
+    @default
+      $unhandledCase: {@apiMethod.getClass.getSimpleName}$
+    @end
+    {@BREAK}
+  @end
+@end
+
 @private apiMethods(xapiClass)
   @join apiMethod : xapiClass.apiMethods
     @switch apiMethod.type
