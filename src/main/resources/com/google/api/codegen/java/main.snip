@@ -396,6 +396,42 @@
 
 @private apiMethods(xapiClass)
   @join apiMethod : xapiClass.apiMethods
+    @let coreSampleCode = incodeSamples(apiMethod)  
+      @switch apiMethod.type
+      @case "PagedFlattenedMethod"
+        {@pagedFlattenedMethod(apiMethod, coreSampleCode)}
+      @case "PagedRequestObjectMethod"
+        {@pagedRequestObjectMethod(apiMethod, coreSampleCode)}
+      @case "PagedCallableMethod"
+        {@pagedCallableMethod(apiMethod, coreSampleCode)}
+      @case "UnpagedListCallableMethod"
+        {@unpagedListCallableMethod(apiMethod, coreSampleCode)}
+      @case "FlattenedMethod"
+        {@flattenedMethod(apiMethod, coreSampleCode)}
+      @case "RequestObjectMethod"
+        {@requestObjectMethod(apiMethod, coreSampleCode)}
+      @case "CallableMethod"
+        @if apiMethod.isStreaming
+          {@streamingCallableMethod(apiMethod, coreSampleCode)}
+        @else
+          {@callableMethod(apiMethod, coreSampleCode)}
+        @end
+      @case "AsyncOperationFlattenedMethod"
+        {@asyncOperationFlattenedMethod(apiMethod, coreSampleCode)}
+      @case "AsyncOperationRequestObjectMethod"
+        {@asyncOperationRequestObjectMethod(apiMethod, coreSampleCode)}
+      @case "OperationCallableMethod"
+        {@operationCallableMethod(apiMethod, coreSampleCode)}
+      @default
+        $unhandledCase: {@apiMethod.getClass.getSimpleName}$
+      @end
+      {@BREAK}
+    @end
+  @end
+@end
+
+@private OLDapiMethods(xapiClass)
+  @join apiMethod : xapiClass.apiMethods
     @switch apiMethod.type
     @case "PagedFlattenedMethod"
       {@pagedFlattenedMethod(apiMethod)}
@@ -461,12 +497,10 @@
 
 @end
 
-@private pagedFlattenedMethod(apiMethod)
-  @let coreSampleCode = pagedIterableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private pagedFlattenedMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.visibility} final {@apiMethod.responseTypeName} {@apiMethod.name}({@paramList(apiMethod.methodParams)}) {
@@ -481,12 +515,10 @@
   }
 @end
 
-@private pagedRequestObjectMethod(apiMethod)
-  @let coreSampleCode = pagedIterableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private pagedRequestObjectMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.requestObjectMethod.accessModifier} final {@apiMethod.responseTypeName} \
@@ -496,26 +528,20 @@
   }
 @end
 
-@private pagedCallableMethod(apiMethod)
-  @let coreSampleCode = pagedCallableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private pagedCallableMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   {@callableMethodImpl(apiMethod)}
 @end
 
-@private unpagedListCallableMethod(apiMethod)
-  @let coreSampleCode = unpagedListCallableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private unpagedListCallableMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   {@callableMethodImpl(apiMethod)}
 @end
 
-@private flattenedMethod(apiMethod)
-  @let coreSampleCode = syncMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private flattenedMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.visibility} final {@apiMethod.responseTypeName} {@apiMethod.name}(\
@@ -529,12 +555,10 @@
   }
 @end
 
-@private requestObjectMethod(apiMethod)
-  @let coreSampleCode = syncMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private requestObjectMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.requestObjectMethod.accessModifier} final {@apiMethod.responseTypeName} \
@@ -547,16 +571,14 @@
   }
 @end
 
-@private callableMethod(apiMethod)
-  @let coreSampleCode = callableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private callableMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   {@callableMethodImpl(apiMethod)}
 @end
 
 @private callableMethodImpl(apiMethod)
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.visibility} final UnaryCallable<{@apiMethod.serviceRequestTypeName}, \
@@ -565,12 +587,10 @@
   }
 @end
 
-@private streamingCallableMethod(apiMethod)
-  @let coreSampleCode = streamingCallableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private streamingCallableMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   {@apiMethod.visibility} final {@apiMethod.callableMethod.interfaceTypeName}\
@@ -580,12 +600,10 @@
   }
 @end
 
-@private asyncOperationFlattenedMethod(apiMethod)
-  @let coreSampleCode = asyncOperationMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private asyncOperationFlattenedMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   @@BetaApi("The surface for long-running operations is not stable yet and may change in the future.")
@@ -597,12 +615,10 @@
   }
 @end
 
-@private asyncOperationRequestObjectMethod(apiMethod)
-  @let coreSampleCode = asyncOperationMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private asyncOperationRequestObjectMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   @@BetaApi("The surface for long-running operations is not stable yet and may change in the future.")
@@ -613,12 +629,10 @@
   }
 @end
 
-@private operationCallableMethod(apiMethod)
-  @let coreSampleCode = asyncOperationCallableMethodSampleCode(apiMethod, apiMethod.initCode)
-    {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
-  @end
+@private operationCallableMethod(apiMethod, coreSampleCode)
+  {@methodDoc(apiMethod.doc, decorateSampleCode(apiMethod, coreSampleCode))}
   @if apiMethod.releaseLevelAnnotation
-    {@apiMethod.releaseLevelAnnotation}
+    {@apiMethod.releaseLevelAnnotation}  //vchudnov.releaseLevelAnnotation
 
   @end
   @@BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
@@ -669,7 +683,6 @@
     @end
   @end
    */
-  {@EMPTY}
 @end
 
 @private paramDoc(doc)

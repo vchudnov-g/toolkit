@@ -8,6 +8,50 @@
   }
 @end
 
+@snippet incodeSamples(apiMethod)
+    @join sample : apiMethod.samples on BREAK.add(BREAK).add(BREAK).add("// Alternatively:").add(BREAK)
+      @let firstSample = apiMethod.samples.get(0)
+        {@incodeSample(apiMethod, sample)}
+      @end
+    @end
+@end
+
+@private incodeSample(apiMethod, sample)
+  @let initCode = sample.initCode
+    @switch sample.callingForm
+    @case "Request"
+      {@syncMethodSampleCode(apiMethod, initCode)}
+    @case "RequestPaged"
+      {@pagedIterableMethodSampleCode(apiMethod, initCode)}
+    @case "Flattened"
+      {@syncMethodSampleCode(apiMethod, initCode)}
+    @case "FlattenedPaged"
+      {@pagedIterableMethodSampleCode(apiMethod, initCode)}      
+    @case "Callable"
+      {@callableMethodSampleCode(apiMethod, initCode)}
+    @case "CallableList"
+      {@unpagedListCallableMethodSampleCode(apiMethod, initCode)}
+    @case "CallablePaged"
+      {@pagedCallableMethodSampleCode(apiMethod, initCode)}
+    @case "CallableStreamingBidi"
+      {@bidiStreamingCallableSampleCode(apiMethod, initCode)}      
+    @case "CallableStreamingClient"
+      {@clientStreamingCallableSampleCode(apiMethod, initCode)}
+    @case "CallableStreamingServer"
+      {@serverStreamingCallableSampleCode(apiMethod, initCode)}
+    @case "LongRunningCallable"
+      {@asyncOperationCallableMethodSampleCode(apiMethod, initCode)}
+    @case "LongRunningFlattenedAsync"
+      {@asyncOperationMethodSampleCode(apiMethod, initCode)}
+    @case "LongRunningRequestAsync"
+      {@asyncOperationMethodSampleCode(apiMethod, initCode)}
+    @default
+      $unhandledCallingForm: {@sample.callingForm} in sample "{@apiMethod.getClass.getSimpleName}"$
+    @end
+  @end
+  // vchudnov:eos: {@sample.callingForm} {@apiMethod.type}
+@end
+
 @snippet pagedIterableMethodSampleCode(apiMethod, initCode)
   {@initCode(initCode)}
   for ({@apiMethod.listMethod.resourceTypeName} element : {@sampleSyncMethodCall(apiMethod)}.{@apiMethod.listMethod.iterateMethodName}()) {
