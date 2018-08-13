@@ -4059,12 +4059,9 @@ def lint_setup_py(session):
     session.run(
         'python', 'setup.py', 'check', '--restructuredtext', '--strict')
 ============== file: samples/google/cloud/example/library_v1/gapic/discuss_book/discuss_book_request_streaming_bidi_prog.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "DiscussBookRequestStreamingBidiProg" ]
-#### STUB standalone sample "DiscussBookRequestStreamingBidiProg" #####
+#### [ DO NOT EDIT: generated sample file ("RequestStreamingBidi",  "prog") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START turing_prog_request_streaming_bidi]
@@ -4102,12 +4099,9 @@ print(response)
 
 # [END turing_prog_request_streaming_bidi]
 ============== file: samples/google/cloud/example/library_v1/gapic/find_related_books/find_related_books_request_paged_all_odyssey.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "FindRelatedBooksRequestPagedAllOdyssey" ]
-#### STUB standalone sample "FindRelatedBooksRequestPagedAllOdyssey" #####
+#### [ DO NOT EDIT: generated sample file ("RequestPagedAll",  "odyssey") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START sample]
@@ -4146,12 +4140,9 @@ for element in client.find_related_books(names, shelves):
 
 # [END sample]
 ============== file: samples/google/cloud/example/library_v1/gapic/find_related_books/find_related_books_request_paged_odyssey.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "FindRelatedBooksRequestPagedOdyssey" ]
-#### STUB standalone sample "FindRelatedBooksRequestPagedOdyssey" #####
+#### [ DO NOT EDIT: generated sample file ("RequestPaged",  "odyssey") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START sample]
@@ -4191,12 +4182,9 @@ for page in client.find_related_books(names, shelves, options=CallOptions(page_t
 
 # [END sample]
 ============== file: samples/google/cloud/example/library_v1/gapic/get_big_book/get_big_book_long_running_promise_wap.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "GetBigBookLongRunningPromiseWap" ]
-#### STUB standalone sample "GetBigBookLongRunningPromiseWap" #####
+#### [ DO NOT EDIT: generated sample file ("LongRunningPromise",  "wap") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START hopper]
@@ -4239,12 +4227,9 @@ print(response)
 
 # [END hopper]
 ============== file: samples/google/cloud/example/library_v1/gapic/monolog_about_book/monolog_about_book_request_streaming_client_prog.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "MonologAboutBookRequestStreamingClientProg" ]
-#### STUB standalone sample "MonologAboutBookRequestStreamingClientProg" #####
+#### [ DO NOT EDIT: generated sample file ("RequestStreamingClient",  "prog") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START sample]
@@ -4280,12 +4265,9 @@ print(response)
 
 # [END sample]
 ============== file: samples/google/cloud/example/library_v1/gapic/publish_series/publish_series_request_pi_version.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "PublishSeriesRequestPiVersion" ]
-#### STUB standalone sample "PublishSeriesRequestPiVersion" #####
+#### [ DO NOT EDIT: generated sample file ("Request",  "pi_version") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START canonical]
@@ -4327,12 +4309,9 @@ print('That\'s all!')
 
 # [END canonical]
 ============== file: samples/google/cloud/example/library_v1/gapic/publish_series/publish_series_request_second_edition.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "PublishSeriesRequestSecondEdition" ]
-#### STUB standalone sample "PublishSeriesRequestSecondEdition" #####
+#### [ DO NOT EDIT: generated sample file ("Request",  "second_edition") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START canonical]
@@ -4374,12 +4353,9 @@ print(response)
 
 # [END canonical]
 ============== file: samples/google/cloud/example/library_v1/gapic/stream_books/stream_books_request_streaming_server_prog.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "StreamBooksRequestStreamingServerProg" ]
-#### STUB standalone sample "StreamBooksRequestStreamingServerProg" #####
+#### [ DO NOT EDIT: generated sample file ("RequestStreamingServer",  "prog") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START lovelace]
@@ -4415,12 +4391,9 @@ print(response)
 
 # [END lovelace]
 ============== file: samples/google/cloud/example/library_v1/gapic/stream_shelves/stream_shelves_request_streaming_server_empty.py ==============
-#### [ This is an auto-generated sample file produced by the gapic-generator. Sample name: "StreamShelvesRequestStreamingServerEmpty" ]
-#### STUB standalone sample "StreamShelvesRequestStreamingServerEmpty" #####
+#### [ DO NOT EDIT: generated sample file ("RequestStreamingServer",  "empty") ]
 
-# FIXME: Insert here set-up comments that we never want to display in cloudsite. These are seen by users perusing the samples directly in the repository.
-
-# To run with the published packaged, execute the following before running this code:
+# To run with the published packages, execute the following before running this code:
 #   pip install google-cloud-library
 
 # [START sample]
